@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
+import EmployeeService from '../services/EmployeeService';
 
 class ListEmployeeComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            employees : []
+            employees: []
         }
     }
+    componentDidMount() {
+        EmployeeService.getEmployees().then((res) => {
+            this.setState({ employees: res.data });
+        });
+    }
+
     render() {
         return (
             <div>
@@ -25,11 +32,11 @@ class ListEmployeeComponent extends Component {
                             {
                                 this.state.employees.map(
                                     employee =>
-                                    <tr key={employee.id}>
-                                        <td>{employee.firstName}</td>
-                                        <td>{employee.lastName}</td>
-                                        <td>{employee.emailId}</td>
-                                    </tr>
+                                        <tr key={employee.id}>
+                                            <td>{employee.firstName}</td>
+                                            <td>{employee.lastName}</td>
+                                            <td>{employee.emailId}</td>
+                                        </tr>
                                 )
                             }
                         </tbody>
