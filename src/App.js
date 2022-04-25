@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import ListEmployeeComponent from './components/ListEmployeeComponent';
 import HeaderComponent from './components/HeaderComponent';
 import FooterComponent from './components/FooterComponent';
@@ -7,11 +8,17 @@ import FooterComponent from './components/FooterComponent';
 function App() {
   return (
     <div>
-      <HeaderComponent />
+      <Router>
+        <HeaderComponent />
         <div className="container">
-          <ListEmployeeComponent />
+          <Routes>
+            <Route path='/' element={<ListEmployeeComponent />} />
+            <Route path='/employees' element={<ListEmployeeComponent />} />
+            <Route path='/home' element={<ListEmployeeComponent />} />
+          </Routes>
         </div>
-      <FooterComponent />
+        <FooterComponent />
+      </Router>
     </div>
   );
 }
