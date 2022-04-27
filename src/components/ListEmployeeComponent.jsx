@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { useNavigate } from 'react-router-dom';
 import EmployeeService from '../services/EmployeeService';
 
 class ListEmployeeComponent extends Component {
@@ -25,7 +24,7 @@ class ListEmployeeComponent extends Component {
             <div>
                 <h2 className="text-center">Employees List</h2>
                 <div className="row">
-                    <button className="btn btn-primary" onClick={this.addEmployee}>Add Employee</button>
+                    <button className="btn btn-primary" onClick={this.addEmployee}> Add Employee </button>
                 </div>
                 <div className="row">
                     <table className="table table-striped table-bordered">
