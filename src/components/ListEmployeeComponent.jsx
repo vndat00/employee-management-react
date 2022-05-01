@@ -10,16 +10,22 @@ class ListEmployeeComponent extends Component {
         this.addEmployee = this.addEmployee.bind(this);
         this.editEmployee = this.editEmployee.bind(this);
         this.deleteEmployee = this.deleteEmployee.bind(this);
+        this.viewEmployee = this.viewEmployee.bind(this);
     }
 
-    editEmployee(id){
+    editEmployee(id) {
         this.props.history.push(`/add-employee/id=${id}`);
     }
 
     deleteEmployee(id) {
-        EmployeeService.deleteEmployee(id).then( res => {
-            this.setState({employees: this.state.employees.filter(employee => employee.id !== id)});
+        EmployeeService.deleteEmployee(id).then(res => {
+            this.setState({ employees: this.state.employees.filter(employee => employee.id !== id) });
         });
+    }
+
+    viewEmployee(id) {
+        this.props.history.push(`/view-employee/id=${id}`);
+
     }
 
     componentDidMount() {
@@ -38,7 +44,7 @@ class ListEmployeeComponent extends Component {
             <div>
                 <h2 className="text-center">Employees List</h2>
                 <div className="row">
-                    <button className="btn btn-primary" onClick={this.addEmployee}> Add Employee </button>
+                    <button className="btn btn-primary btn-addEmployee" onClick={this.addEmployee}> Add Employee </button>
                 </div>
                 <div className="row">
                     <table className="table table-striped table-bordered">
@@ -59,10 +65,12 @@ class ListEmployeeComponent extends Component {
                                             <td>{employee.lastName}</td>
                                             <td>{employee.emailId}</td>
                                             <td>
-                                                <button onClick = { () => this.editEmployee(employee.id) } className="btn btn-info">Update</button>
-                                                <button onClick = { () => this.deleteEmployee(employee.id) } className="btn btn-danger">Delete</button>
+                                                <button onClick={() => this.editEmployee(employee.id)} className="btn btn-info">Update</button>
+                                                <button onClick={() => this.deleteEmployee(employee.id)} className="btn btn-danger">Delete</button>
+                                                <button onClick={() => this.viewEmployee(employee.id)} className="btn btn-info">View</button>
+
                                             </td>
-                                           
+
                                         </tr>
                                 )
                             }
