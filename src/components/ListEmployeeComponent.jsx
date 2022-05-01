@@ -67,7 +67,7 @@ class ListEmployeeComponent extends Component {
                                             <td>
                                                 <button onClick={() => this.editEmployee(employee.id)} className="btn btn-info">Update</button>
                                                 <button onClick={() => this.deleteEmployee(employee.id)} className="btn btn-danger">Delete</button>
-                                                <button onClick={() => this.viewEmployee(employee.id)} className="btn btn-info">View</button>
+                                                <button onClick={() => this.viewEmployee(employee.id)} className="btn btn-warning">View</button>
 
                                             </td>
 
